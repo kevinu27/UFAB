@@ -74,7 +74,8 @@ router.put('/:id', (req, res) => {
     console.log("reqbody", req.body)
     const userId = req.params.id
     const user = req.body
-
+    user.location = { type: "Point", coordinates: [user.position.lat, user.position.lng] }
+    console.log(user, "lo que mandamos a la DB")
     User
         .findByIdAndUpdate(userId, user) //le paso con req.params.user_id lo que pilla de la url y con job le paso lo del formulario
         .then(response => res.json(response))

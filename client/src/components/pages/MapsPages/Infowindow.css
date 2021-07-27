@@ -1,0 +1,10 @@
+.infoWindow {
+    width: 300px;
+    height: 200px;
+    background-color: white;
+}
+
+.infoWindowHidden {
+display: none;
+}
+
