@@ -1,0 +1,23 @@
+[
+    {
+        "title": "The Shawshank Redemption",
+        "description": "1994",
+        "inversions": "2",
+        "length": "2",
+        "imageUrl": "9.3"
+    },
+    {
+        "title": "The Godfather",
+        "description": "1972",
+        "inversions": "3",
+        "length": "3",
+        "imageUrl": "9.2"
+    },
+    {
+        "title": "The Godfather: Part II",
+        "description": "1974",
+        "inversions": "5",
+        "length": "4",
+        "imageUrl": "9.0"
+    }
+]
