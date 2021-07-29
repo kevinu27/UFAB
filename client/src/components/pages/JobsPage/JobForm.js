@@ -6,8 +6,8 @@ import JobService from "../../../services/jobs.service";
 
 class JobForm extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = { jobType: '', description: '', deliveryAdress: '' }
         this.jobService = new JobService()
 
@@ -22,7 +22,8 @@ class JobForm extends Component {
     handleFormSubmit = e => {
         e.preventDefault()
 
-        this.jobService.createJob(this.state)
+        this.jobService
+            .createJob({ ...this.state, sender: this.props.sender, receiver: this.props.receiver })
             .then(() => this.props.history.push('/jobs'))
             .catch(err => console.log(err))
     }

@@ -2,6 +2,8 @@ import { Component } from 'react'
 //import { response } from '../../../../../server/app'
 import JobService from '../../../services/jobs.service'
 import { Container, Row, Col } from 'react-bootstrap'
+import MessageForm from './../../messages/messagesForm'
+import MessageService from '../../../services/message.service'
 
 class JobDetails extends Component {
 
@@ -12,14 +14,11 @@ class JobDetails extends Component {
             job: undefined
         }
         this.jobService = new JobService()
+        this.messageService = new MessageService()
     }
 
     componentDidMount() {
-
-
-        console.log(this.props, 'estas son las props')
         this.loadJob()
-
     }
 
     loadJob() {
@@ -28,11 +27,14 @@ class JobDetails extends Component {
         this.jobService
             .getOneJob(job_id)
             .then(response => {
-                console.log(response)
                 this.setState({ job: response.data })
             })
             .catch(err => console.log(err))
+
     }
+
+
+
 
     render() {
         return (
@@ -53,6 +55,16 @@ class JobDetails extends Component {
                                 <p> status: {this.state.job.status}</p>
                                 <p> Description: {this.state.job.description}</p>
                                 <p> deliveryAdress: {this.state.job.deliveryAdress}</p>
+                            </Col>
+                            <Col md={10}>
+                                <h4>Mensajes:</h4>
+
+                                {this.state.job.messages[0].message}
+
+                                {this.state.job.messages.map(elm => <><p> {elm.sender.name}</p> <p> {elm.message}</p></>)}
+                                <MessageForm loggedUser={this.props.loggedUser} job_id={this.state.job._id} {...this.props} />
+
+
                             </Col>
                         </Row>
                     </Container>

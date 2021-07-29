@@ -13,7 +13,7 @@ const Navigation = ({ storeUser, loggedUser }) => {
             .catch(err => console.log(err))
 
     }
-    console.log(loggedUser)
+
     return (
         <Navbar bg="dark" variant="dark" expand="md" style={{ marginBottom: '30px' }}>
             <Navbar.Brand href="#home">UFAB</Navbar.Brand >

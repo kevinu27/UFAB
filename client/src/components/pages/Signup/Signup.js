@@ -6,7 +6,7 @@ class Signup extends Component {
 
     constructor() {
         super()
-        this.state = { name: '', surname: '', pwd: '', email: '' }
+        this.state = { name: '', surname: '', pwd: '', email: '', description: '' }
         this.userService = new UserService()
     }
 
@@ -19,11 +19,10 @@ class Signup extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault()
-
-        const { name, surname, pwd, email } = this.state
+        const { name, surname, pwd, email, description } = this.state
 
         this.userService
-            .signup(name, surname, pwd, email)
+            .signup(name, surname, pwd, email, description)
             .then(() => this.props.history.push('/user/login'))
             .catch(err => console.log(err))
     }
@@ -62,6 +61,12 @@ class Signup extends Component {
                                 <Form.Group className="mb-3" controlId="email">
                                     <Form.Label>Email</Form.Label>
                                     <Form.Control type="email" value={this.state.email} onChange={this.handleInputChange} name="email" />
+                                </Form.Group>
+
+
+                                <Form.Group className="mb-3" controlId="description">
+                                    <Form.Label>descripcion</Form.Label>
+                                    <Form.Control type="text" value={this.state.description} onChange={this.handleInputChange} name="description" />
                                 </Form.Group>
 
 

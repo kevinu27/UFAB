@@ -4,7 +4,7 @@ class JobService {
 
     constructor() {
         this.app = axios.create({
-            baseURL: 'http://localhost:5000/api/jobs',
+            baseURL: `${process.env.REACT_APP_BASE_UR}/jobs`,
             withCredentials: true
         })
     }

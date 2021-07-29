@@ -24,8 +24,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "dotenv -e .env.production.REACT_APP_BASE_URL_LOCAL react-scripts start",
+    "build": "dotenv -e .env.production.REACT_APP_BASE_URL react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

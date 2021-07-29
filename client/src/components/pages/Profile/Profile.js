@@ -24,7 +24,6 @@ class Profile extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault()
-        console.log(this.state)
         const userId = this.props.match.params.id
         this.userService
             .editUser(userId, this.state)
@@ -42,15 +41,10 @@ class Profile extends Component {
                     email: response.data.email
 
                 })).catch(err => console.log(err))
-
-
-        console.log(this.state.name)
-
     }
 
 
     handleMarkerPosition = position => {
-        console.log("handleMarkerPosition", position)   ///////////////////////////////////////////////////aqui hacer el setState 
         this.setState({
             ...this.state,
             position: position
@@ -59,7 +53,6 @@ class Profile extends Component {
     }
 
     render() {
-        console.log("state", this.state)
         return (
 
             <>

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import UserService from '../../../services/user.service'
-import { Marker } from 'google-map-react';
+
 
 
 import Marcador from './Marcador'
@@ -42,8 +42,6 @@ class SimpleMap extends Component {
     };
 
     _onChildClick = (key, childProps) => {
-        console.log(key, "key")
-
         this.setState({
             ...this.state,
             show: !this.state.show,
@@ -53,15 +51,10 @@ class SimpleMap extends Component {
 
             },
             infoWindowData: this.state.users[key]
-
         })
-
-
     }
 
     handleClick(event) {
-        console.log("handleclick")
-
         this.setState({
             ...this.state,
             show: false,
@@ -70,17 +63,9 @@ class SimpleMap extends Component {
                 lng: null
             }
         })
-
-    }
-
-
-    onLoad = marker => {
-        console.log('marker: ', marker)
     }
 
     render() {
-        console.log(this.state.childProps?.lat)
-
         return (
             <div style={{ height: '100vh', width: '100%' }} >
                 <GoogleMapReact

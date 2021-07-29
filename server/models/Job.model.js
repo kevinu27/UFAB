@@ -7,7 +7,8 @@ const jobSchema = new Schema({
     //     size: Number/* seguir añadiedo */
     // },
     sender: { type: Schema.Types.ObjectId, ref: 'User' },
-    // receiver: { type: Schema.Types.ObjectId, ref: 'User' },
+    receiver: { type: Schema.Types.ObjectId, ref: 'User' },
+    messages: [{ type: Schema.Types.ObjectId, ref: 'RequestMessage' }],
     status: {
         type: String,
         enum: ['rechazada', 'pendiente de aprobación', 'En proceso', 'En espera', 'Terminado', 'En envio']//TODO

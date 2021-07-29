@@ -14,7 +14,7 @@ const Job = require('./../models/Job.model')
 router.get('/getJobs', (req, res) => { /////:state aceptadas, rechazadas o pendiente de aprobación
 
     const userId = req.session.currentUser._id
-    console.log(req.session.currentUser)
+
     Job
         .find({
             $or: [
@@ -22,7 +22,7 @@ router.get('/getJobs', (req, res) => { /////:state aceptadas, rechazadas o pendi
                 { receiver: userId }
             ]
         })
-        .populate("sender")
+        .populate("sender receiver")
         .then(response => res.json(response))
         .catch(err => res.status(500).json({ code: 500, message: 'Error fetching coasters', err }))
 })
@@ -33,7 +33,7 @@ router.post('/newJob', (req, res) => {
 
     let job = { ...req.body }
     let { description } = req.body
-    console.log(description)
+    console.log(req.body)
     job.sender = req.session.currentUser._id
 
 
@@ -59,6 +59,12 @@ router.get('/getOneJob/:job_id', (req, res) => {
 
     Job
         .findById(req.params.job_id) /// req.params es lo que le pasas por la url
+        .populate({
+            path: 'RequestMessage',
+            populate: {
+                path: 'User'
+            }
+        })
         .then(response => res.json(response))
         .catch(err => res.status(500).json({ code: 500, message: 'Error fetching coasters', err }))
 })

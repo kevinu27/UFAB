@@ -11,7 +11,7 @@ const User = require('./../models/User.model')
 
 router.post('/signup', (req, res) => {
 
-    const { name, pwd, email } = req.body
+    const { name, pwd, email, description } = req.body
 
 
     User
@@ -27,7 +27,7 @@ router.post('/signup', (req, res) => {
             const hashPass = bcrypt.hashSync(pwd, salt)
 
             User
-                .create({ name, pwd: hashPass, email })
+                .create({ name, pwd: hashPass, email, description })
                 .then(() => res.json({ code: 200, message: 'User created' }))
                 .catch(err => res.status(500).json({ code: 500, message: 'DB error while creating user', err }))
 
@@ -70,12 +70,11 @@ router.post('/isloggedin', (req, res) => {
 
 
 router.put('/:id', (req, res) => {
-    console.log("params", req.params)
-    console.log("reqbody", req.body)
+
     const userId = req.params.id
     const user = req.body
     user.location = { type: "Point", coordinates: [user.position.lat, user.position.lng] }
-    console.log(user, "lo que mandamos a la DB")
+
     User
         .findByIdAndUpdate(userId, user) //le paso con req.params.user_id lo que pilla de la url y con job le paso lo del formulario
         .then(response => res.json(response))
@@ -85,6 +84,7 @@ router.put('/:id', (req, res) => {
 
 router.get('/:id', (req, res) => {
 
+    console.log("llamadahecha")
     const user = req.params.id
 
     User
@@ -100,7 +100,7 @@ router.get('/', (req, res) => {
 
     User
         .find({})
-        .then(response => { res.json(response); console.log(response) })
+        .then(response => res.json(response))
         .catch(err => res.status(500).json({ code: 500, message: 'Error fetching coasters', err }))
 })
 

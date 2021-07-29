@@ -4,15 +4,16 @@ class UserService {
 
     constructor() {
         this.app = axios.create({
-            baseURL: 'http://localhost:5000/api/user',
+            baseURL: `${process.env.REACT_APP_BASE_UR}/user`,
             withCredentials: true
         })
     }
 
     login = (email, pwd) => this.app.post('/login', { email, pwd })
-    signup = (name, surname, pwd, email) => this.app.post('/signup', { name, surname, pwd, email })
+    signup = (name, surname, pwd, email, description) => this.app.post('/signup', { name, surname, pwd, email, description })
     logout = () => this.app.get('/logout')
     isLoggedIn = () => this.app.post('/isLoggedIn')
+    ////-------------------------------------------user
     editUser = (id, user) => this.app.put(`/${id}`, user)
     getById = (id) => this.app.get(`/${id}`)
     getAll = () => this.app.get('/')

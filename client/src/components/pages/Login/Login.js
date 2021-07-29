@@ -25,7 +25,6 @@ class Login extends Component {
         this.userService
             .login(email, pwd)
             .then(loggedUserfromServer => {
-                console.log(loggedUserfromServer)
                 this.props.storeUser(loggedUserfromServer.data)
                 this.props.history.push('/')
             })

@@ -35,21 +35,14 @@ class MapUser extends Component {
         },
         zoom: 12
     };
-    onLoad = marker => {
-        console.log('marker: ', marker)
-    }
-
 
     handleClick(event) {
         let lat2 = event.lat
         let lng2 = event.lng
-        console.log(lat2, lng2, "lats")
         this.setState({
             lat: event.lat,
             lng: event.lng
-
         })
-        console.log("props", this.props)
 
         this.props.handleMarkerPosition({
             lat: event.lat,
