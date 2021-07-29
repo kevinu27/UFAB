@@ -2,9 +2,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import UserService from '../../../services/user.service'
-
-
-
 import Marcador from './Marcador'
 import InfoWindow2 from './InfoWindow2';
 
@@ -88,8 +85,6 @@ class SimpleMap extends Component {
                             lat={elm.location.coordinates[0]}
                             lng={elm.location.coordinates[1]}
                             text={elm.email}
-
-                        //onClick={this.onClick}
                         />
                         )}
 

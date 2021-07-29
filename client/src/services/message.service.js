@@ -4,7 +4,7 @@ class MessageService {
 
     constructor() {
         this.app = axios.create({
-            baseURL: `${process.env.REACT_APP_BASE_URL}/message`,
+            baseURL: `${process.env.production.REACT_APP_BASE_URL}/message`,
             withCredentials: true
         })
     }
