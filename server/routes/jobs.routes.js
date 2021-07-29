@@ -60,7 +60,7 @@ router.get('/getOneJob/:job_id', (req, res) => {
     Job
         .findById(req.params.job_id) /// req.params es lo que le pasas por la url
         .populate({
-            path: 'RequestMessage',
+            path: 'RequestMessage',  /////si no funciona aqui messages y en path sender
             populate: {
                 path: 'User'
             }

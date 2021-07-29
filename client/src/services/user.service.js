@@ -4,7 +4,7 @@ class UserService {
 
     constructor() {
         this.app = axios.create({
-            baseURL: `${process.env.production.REACT_APP_BASE_URL}/user`,
+            baseURL: `${process.env.REACT_APP_BASE_URL}/user`,
             withCredentials: true
         })
     }
