@@ -93,7 +93,7 @@ class SimpleMap extends Component {
 
 
                 </GoogleMapReact>
-            </div >
+            </div>
         );
     }
 }
