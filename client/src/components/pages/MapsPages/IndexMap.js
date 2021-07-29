@@ -67,33 +67,37 @@ class SimpleMap extends Component {
 
     render() {
         return (
-            <div style={{ height: '100vh', width: '100%' }} >
-                <GoogleMapReact
+            !this.state.users
+                ?
+                <h1>Cargando...</h1>
+                :
+                <div style={{ height: '100vh', width: '100%' }} >
+                    <GoogleMapReact
 
-                    bootstrapURLKeys={{ key: "AIzaSyAiWoZMeyUtielp3mdwvhIbbcddZkfUMtU" }}
-                    defaultCenter={this.props.center}
-                    defaultZoom={this.props.zoom}
-                    onChildClick={this._onChildClick}
-                    onClick={(e) => this.handleClick(e)}
+                        bootstrapURLKeys={{ key: "AIzaSyAiWoZMeyUtielp3mdwvhIbbcddZkfUMtU" }}
+                        defaultCenter={this.props.center}
+                        defaultZoom={this.props.zoom}
+                        onChildClick={this._onChildClick}
+                        onClick={(e) => this.handleClick(e)}
 
-                >
-
-
-                    {this.state.users && this.state.users.map(elm => elm.location && <Marcador
-                        onLoad={this.onLoad}
-                        lat={elm.location.coordinates[0]}
-                        lng={elm.location.coordinates[1]}
-                        text={elm.email}
-
-                    //onClick={this.onClick}
-                    />
-                    )}
-
-                    <InfoWindow2 user={this.state.infoWindowData} show={this.state.show} lat={this.state.infoWindowPosition?.lat} lng={this.state.infoWindowPosition?.lng} />
+                    >
 
 
-                </GoogleMapReact>
-            </div>
+                        {this.state.users && this.state.users.map(elm => elm.location && <Marcador
+                            onLoad={this.onLoad}
+                            lat={elm.location.coordinates[0]}
+                            lng={elm.location.coordinates[1]}
+                            text={elm.email}
+
+                        //onClick={this.onClick}
+                        />
+                        )}
+
+                        <InfoWindow2 user={this.state.infoWindowData} show={this.state.show} lat={this.state.infoWindowPosition?.lat} lng={this.state.infoWindowPosition?.lng} />
+
+
+                    </GoogleMapReact>
+                </div>
         );
     }
 }
