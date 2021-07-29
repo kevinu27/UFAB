@@ -4,7 +4,6 @@ import { Row } from 'react-bootstrap'
 import JobCard from './JobCard'
 
 class JobsList extends Component {
-
     constructor() {
         super()
         this.state = {
@@ -20,7 +19,6 @@ class JobsList extends Component {
             .catch(err => console.log(err))
     }
 
-
     render() {
         return (
             this.state.jobs
@@ -31,13 +29,8 @@ class JobsList extends Component {
                 )
                 :
                 <p>Loading...</p>
-
         )
     }
-
-
-
-
 }
 
 export default JobsList

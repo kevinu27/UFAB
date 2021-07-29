@@ -3,7 +3,6 @@ import { Form, Row, Col, Button, Container } from 'react-bootstrap'
 import UserService from '../../../services/user.service'
 
 class Login extends Component {
-
     constructor() {
         super()
         this.state = { pwd: '', email: '' }
@@ -14,14 +13,11 @@ class Login extends Component {
     handleInputChange = e => {
         const { name, value } = e.target
         this.setState({ [name]: value })
-
     }
 
     handleFormSubmit = e => {
         e.preventDefault()
-
         const { email, pwd } = this.state
-
         this.userService
             .login(email, pwd)
             .then(loggedUserfromServer => {
@@ -31,22 +27,14 @@ class Login extends Component {
             .catch(err => console.log(err))
     }
 
-
-
-
     render() {
         return (
-
             <>
-
                 <Container>
-
                     <Row>
                         <Col md={{ span: 6, offset: 3 }}>
                             <h1>Inicio de sesión</h1>
-
                             <hr></hr>
-
                             <Form onSubmit={this.handleFormSubmit}>
 
                                 <Form.Group className="mb-3" controlId="email">
@@ -59,26 +47,14 @@ class Login extends Component {
                                     <Form.Control type="password" value={this.state.pwd} onChange={this.handleInputChange} name="pwd" />
                                 </Form.Group>
 
-
-
                                 <Button variant="dark" type="submit"> Iniciar sesión </Button>
                             </Form>
-
                         </Col>
-
-
                     </Row>
-
-
                 </Container>
             </>
-
-
         )
     }
-
-
 }
-
 
 export default Login

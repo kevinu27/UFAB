@@ -1,15 +1,10 @@
-
-import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import React, { Component } from 'react'
+import GoogleMapReact from 'google-map-react'
 import UserService from '../../../services/user.service'
 import Marcador from './Marcador'
-import InfoWindow2 from './InfoWindow2';
-
-
+import InfoWindow2 from './InfoWindow2'
 
 class SimpleMap extends Component {
-
-
     constructor() {
         super()
         this.state = {
@@ -45,7 +40,6 @@ class SimpleMap extends Component {
             infoWindowPosition: {
                 lat: childProps.lat,
                 lng: childProps.lng
-
             },
             infoWindowData: this.state.users[key]
         })
@@ -70,16 +64,12 @@ class SimpleMap extends Component {
                 :
                 <div style={{ height: '100vh', width: '100%' }} >
                     <GoogleMapReact
-
                         bootstrapURLKeys={{ key: "AIzaSyAiWoZMeyUtielp3mdwvhIbbcddZkfUMtU" }}
                         defaultCenter={this.props.center}
                         defaultZoom={this.props.zoom}
                         onChildClick={this._onChildClick}
                         onClick={(e) => this.handleClick(e)}
-
                     >
-
-
                         {this.state.users && this.state.users.map(elm => elm.location && <Marcador
                             onLoad={this.onLoad}
                             lat={elm.location.coordinates[0]}
@@ -87,10 +77,7 @@ class SimpleMap extends Component {
                             text={elm.email}
                         />
                         )}
-
                         <InfoWindow2 user={this.state.infoWindowData} show={this.state.show} lat={this.state.infoWindowPosition?.lat} lng={this.state.infoWindowPosition?.lng} />
-
-
                     </GoogleMapReact>
                 </div>
         );

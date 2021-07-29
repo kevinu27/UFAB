@@ -1,9 +1,9 @@
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import UserService from '../../../services/user.service'
+import './navigations.css'
 
 const Navigation = ({ storeUser, loggedUser }) => {
-
     const userService = new UserService()
     const logout = () => {
 
@@ -11,12 +11,11 @@ const Navigation = ({ storeUser, loggedUser }) => {
             .logout()
             .then(() => storeUser(undefined))
             .catch(err => console.log(err))
-
     }
 
     return (
-        <Navbar bg="dark" variant="dark" expand="md" style={{ marginBottom: '30px' }}>
-            <Navbar.Brand href="#home">UFAB</Navbar.Brand >
+        <>  <Navbar bg="light" variant="text-dark" expand="md" style={{ marginBottom: '30px' }}>
+            <Navbar.Brand href="#home" className="navigations"><strong>UFAB</strong></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse className="justify-content-end">
                 <Nav className="mr-auto">
@@ -25,9 +24,7 @@ const Navigation = ({ storeUser, loggedUser }) => {
                         <>
                             <Link className="nav-link" to="/user/signup">Registro de usuario</Link>
                             <Link className="nav-link" to="/user/login">Inicio de sesión</Link>
-
                         </>
-
                         :
                         <>
                             <Link className="nav-link" to="/jobs">Tus peticiones</Link>
@@ -38,7 +35,8 @@ const Navigation = ({ storeUser, loggedUser }) => {
                     <span className="nav-link" > {loggedUser ? 'Hola,' + loggedUser.name : ''}</span>
                 </Nav>
             </Navbar.Collapse>
-        </Navbar >
+        </Navbar>
+        </>
     )
 }
 

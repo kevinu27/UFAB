@@ -1,7 +1,7 @@
 import { Switch, Route, Redirect } from 'react-router-dom'
-import IndexPage from './../pages/IndexPage/IndexPage';
+import IndexPage from './../pages/IndexPage/IndexPage'
 import JobsPage from './../pages/JobsPage/JobsPage'
-import JobDetails from '../pages/JobsPage/JobDetails';
+import JobDetails from '../pages/JobsPage/JobDetails'
 import JobForm from '../pages/JobsPage/JobForm'
 import Profile from '../pages/Profile/Profile'
 import Signup from '../pages/Signup/Signup'
@@ -11,7 +11,6 @@ import UserProfile from '../pages/Profile/UserProfile'
 const Routes = ({ storeUser, loggedUser }) => {
 
     return (
-
         <Switch>
             <Route path="/" exact render={() => <IndexPage />} />
             <Route path="/jobs" exact render={() => loggedUser ? <JobsPage loggedUser={loggedUser} /> : <Redirect to="/" />} />
@@ -22,9 +21,7 @@ const Routes = ({ storeUser, loggedUser }) => {
             <Route path='/mi-perfil/:id' render={props => loggedUser ? <Profile loggedUser={loggedUser} {...props} /> : <Redirect to="/" />} />
             <Route path='/perfil-de-usuario/:id' render={props => loggedUser ? <UserProfile loggedUser={loggedUser} {...props} /> : <Redirect to="/" />} />
         </Switch>
-
     )
-
 }
 
 export default Routes

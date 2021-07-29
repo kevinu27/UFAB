@@ -1,0 +1,16 @@
+.Message {
+color: black;
+border-radius: 15px;
+border-style: solid;
+}
+
+.Message p {
+    color: gray;
+    padding: 10px;
+    margin: 20px;
+}
+
+.name{
+    padding-top: 20px;
+   
+}

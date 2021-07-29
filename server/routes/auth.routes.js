@@ -56,36 +56,4 @@ router.post('/isloggedin', (req, res) => {
     req.session.currentUser ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Unauthorized' })
 })
 
-router.put('/:id', (req, res) => {
-
-    const userId = req.params.id
-    const user = req.body
-    user.location = { type: "Point", coordinates: [user.position.lat, user.position.lng] }
-
-    User
-        .findByIdAndUpdate(userId, user)
-        .then(response => res.json(response))
-        .catch(err => res.status(500).json({ code: 500, message: 'Error editing coasters', err }))
-})
-
-
-router.get('/:id', (req, res) => {
-
-    const user = req.params.id
-
-    User
-        .findById(user)
-        .then(response => res.json(response))
-        .catch(err => res.status(500).json({ code: 500, message: 'Error fetching coasters', err }))
-
-})
-
-router.get('/', (req, res) => {
-
-    User
-        .find({})
-        .then(response => res.json(response))
-        .catch(err => res.status(500).json({ code: 500, message: 'Error fetching coasters', err }))
-})
-
 module.exports = router
